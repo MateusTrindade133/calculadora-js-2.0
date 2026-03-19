@@ -16,4 +16,8 @@ let restart = false;
 function updateResult(originClear = false) {
     result.innerText = originClear ? 0 : currentNumber.replace(".", ",");
 }
-
+/* função que atualiza o que aparece na tela
+    se mandar limpar (originClear=true) vai mostrar um 0
+    se não mandar, mostra o numero atual (currentNumber), 
+    trocando . por , para representar o decimal
+*/

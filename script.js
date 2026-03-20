@@ -21,3 +21,12 @@ function updateResult(originClear = false) {
     se não mandar, mostra o numero atual (currentNumber), 
     trocando . por , para representar o decimal
 */
+
+buttons.forEach((button) => {
+    button.addEeventListener("click", () =>{
+        const buttonText = button.innerText;
+        if (/^[0-9,]+$/.test(buttonText)) {
+            addDigit(buttonText);
+        }
+    });
+});

@@ -22,11 +22,35 @@ function updateResult(originClear = false) {
     trocando . por , para representar o decimal
 */
 
+function addDigit(digit) {
+    if (digit == "," && (currentNumber.includes(",") || !currentNumber))
+        return; /*se foi clicado a , e ja tem , então o sistema da um return*/
+    
+    if (restart) {
+        currentNumber = digit;
+        restart = false;
+    } else {
+        currentNumber += digit;
+    } /*evita que restarte os numeros ja clicados da tela de resultados
+    fazendo os numeros aparecerem em sequencia sem sumirem*/
+
+    updateResult();
+}
+
 buttons.forEach((button) => {
     button.addEeventListener("click", () =>{
-        const buttonText = button.innerText;
+        const buttonText = button.innerText; /*variavel que pega o texto do botão clicado*/
         if (/^[0-9,]+$/.test(buttonText)) {
-            addDigit(buttonText);
+            addDigit(buttonText); 
+            /*se o botão tem um texto de 0 a 9 ou tem , ele passa
+            no teste e é chamada a função addDigit que add o digito
+            no resultado*/
+        } else if (["+", "-", "x", ":"].includes(buttonText)) {
+            setOperator(buttonText);
         }
     });
 });
+
+/*Adicionado evento de click*/
+
+

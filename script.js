@@ -50,10 +50,31 @@ function addDigit(digit) {
     }
 
     function calculate () {
-        if (operator == null || firstOperand == null) return;
+        if (operator == null || firstOperand == null) return; /*verifica se existe numero digitado e operador
+        para realizar um calculo, caso não, não faz nada*/
         let secondOperand = parseFloat(currentNumber.replace(",", "."));
-        let resultValue;
+        let resultValue; 
+
+        switch (operator) {
+            case "+":
+                resultValue = firstOperand + secondOperand;
+                break;
+            case "-":
+                resultValue = firstOperand - secondOperand;
+                break;
+             case "x":
+                resultValue = firstOperand * secondOperand;
+                break;
+             case ":":
+                resultValue = firstOperand / secondOperand;
+                break;
+                default:
+                return;         
+
+        }
     }
+
+
 
 buttons.forEach((button) => {
     button.addEeventListener("click", () =>{

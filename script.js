@@ -82,6 +82,14 @@ function addDigit(digit) {
         /*[1] pega a parte decimal */
         /*?.length mede o tamanho se ele existir e o ? evita erro se não
         houver decimal*/
+
+        operator = null;
+        firstOperand = null;
+        restart = true;
+        percentageValue = null;
+        updateResult(); /*depois de feito o calculo, operator, firstOperator
+        e percentageValue serão nulos e o restart apos clicar no = fará que
+        o proximo digito clicado restarte o display*/
     }
 
 

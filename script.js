@@ -72,6 +72,16 @@ function addDigit(digit) {
                 return;         
 
         }
+
+        if (resultValue.toString().split(".")[1]?.length > 5) {
+            currentNumber = parseFloat(resultValue.toFixed(5)).toString();
+        } else {
+            currentNumber = resultValue.toString();
+        } /*resultValue.toString converte numero para string*/
+        /*.split(".") divide em 2 partes, o numero inteiro dos decimais*/
+        /*[1] pega a parte decimal */
+        /*?.length mede o tamanho se ele existir e o ? evita erro se não
+        houver decimal*/
     }
 
 

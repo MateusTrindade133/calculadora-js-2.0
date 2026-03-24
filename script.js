@@ -105,6 +105,8 @@ buttons.forEach((button) => {
         } else if (["+", "-", "x", ":"].includes(buttonText)) {
             setOperator(buttonText); /*verificação se o botão clicado
             é um operador, se sim, chama a função setOperator*/
+        } else if (buttonText == "=") {
+            calculate();
         }
     });
 });

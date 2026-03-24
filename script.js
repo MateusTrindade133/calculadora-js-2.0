@@ -39,6 +39,8 @@ function addDigit(digit) {
 
     function setOperator(newOperator) {
         if (currentNumber) {
+            calculate();
+            
             firstOperand = parseFloat(currentNumber.replace(",", "."));
             currentNumber = "";
         } /*verifica se existe numero atual, se sim, converte ele em

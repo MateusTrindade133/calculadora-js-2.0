@@ -37,6 +37,24 @@ function addDigit(digit) {
     updateResult();
 }
 
+    function setOperator(newOperator) {
+        if (currentNumber) {
+            firstOperand = parseFloat(currentNumber.replace(",", "."));
+            currentNumber = "";
+        } /*verifica se existe numero atual, se sim, converte ele em
+        numero decimal mudando a , por . na casa decimal, salvando em
+        'firstOperand' e zerando o currentNumber para que possa ter o
+        botão seguinte digitado*/
+
+        operator = newOperator /*armazenar o operador na variavel operator*/
+    }
+
+    function calculate () {
+        if (operator == null || firstOperand == null) return;
+        let secondOperand = parseFloat(currentNumber.replace(",", "."));
+        let resultValue;
+    }
+
 buttons.forEach((button) => {
     button.addEeventListener("click", () =>{
         const buttonText = button.innerText; /*variavel que pega o texto do botão clicado*/
@@ -46,7 +64,8 @@ buttons.forEach((button) => {
             no teste e é chamada a função addDigit que add o digito
             no resultado*/
         } else if (["+", "-", "x", ":"].includes(buttonText)) {
-            setOperator(buttonText);
+            setOperator(buttonText); /*verificação se o botão clicado
+            é um operador, se sim, chama a função setOperator*/
         }
     });
 });

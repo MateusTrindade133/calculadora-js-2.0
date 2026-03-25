@@ -94,10 +94,19 @@ function addDigit(digit) {
         o proximo digito clicado restarte o display*/
     }
 
+    function clearCalculator() {
+        currentNumber = "";
+        firstOperand = null;
+        operator = null;
+        updateResult(true);
 
+        /*função que fará o currentNumber ficar vazio, primeiro operador e
+        operador nulos e chamará a função de atualizar o resultado
+        updateResult' */
+    }
 
 buttons.forEach((button) => {
-    button.addEeventListener("click", () =>{
+    button.addEventListener("click", () =>{
         const buttonText = button.innerText; /*variavel que pega o texto do botão clicado*/
         if (/^[0-9,]+$/.test(buttonText)) {
             addDigit(buttonText); 
@@ -109,6 +118,8 @@ buttons.forEach((button) => {
             é um operador, se sim, chama a função setOperator*/
         } else if (buttonText == "=") {
             calculate();
+        } else if (buttonText == "C") {
+            clearCalculator();
         }
     });
 });

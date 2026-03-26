@@ -120,6 +120,11 @@ buttons.forEach((button) => {
             calculate();
         } else if (buttonText == "C") {
             clearCalculator();
+        } else if (buttonText == "+-") {
+            currentNumber = (
+                parseFloat(currentNumber || firstOperand) * -1
+            ) .toString();
+            updateResult();
         }
     });
 });

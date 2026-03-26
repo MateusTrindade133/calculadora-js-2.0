@@ -105,6 +105,26 @@ function addDigit(digit) {
         updateResult' */
     }
 
+    function setPercentage() {
+        let result = parseFloat(currentNumber) / 100;
+
+        if (["+", "-"].includes(operator)) {
+            result = result * (firstOperand || 1);
+            /*no caso do operador ser = OU - como no calculo: 1 +1,
+            o botão % transformará o currentNumber em currentNumber/100 * firstOperand
+            ou numero 1, caso não exista firstOperand. seria algo como
+            10 + 10'%' = '10' + 10/100 *  '10' = 11
+            10 - 10'%' = '10' - 10/100 *  '10' = 9
+            10 '%' = 0,1 */
+        }
+         if (result.toString().split(".")[1]?.length > 5) {
+            result = result.toFixed(5).toString();
+         }
+
+         currentNumber = result.toString();
+         updateResult();
+    }
+
 buttons.forEach((button) => {
     button.addEventListener("click", () =>{
         const buttonText = button.innerText; /*variavel que pega o texto do botão clicado*/
@@ -125,6 +145,8 @@ buttons.forEach((button) => {
                 parseFloat(currentNumber || firstOperand) * -1
             ) .toString();
             updateResult();
+        } else if (buttonText == "%") {
+            setPercentage();
         }
     });
 });
